@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng 20/10 - Người Yêu Của Anh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 97vh;
+            width: 100%;
+        }
+
+        .container svg {
+            width: 50%;
+            height: 50%;
+        }
+
+        /* Phần vẽ hoa hồng */
+        #rose-t {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+        }
+
+        #text-click {
+            display: none;
+            font-family: fantasy;
+            color: indianred;
+            font-size: 30px;
+            margin-top: 20px;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+
+        /* Phần hộp thư */
+        #castle {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1001;
+        }
+
+        .letter {
+            position: relative;
+            z-index: 1;
+        }
+
+        .valentines {
+            position: relative;
+            top: 50px;
+            cursor: pointer;
+            animation: up 3s linear infinite;
+        }
+
+        @keyframes up {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+
+        .envelope {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            background-color: #f08080;
+        }
+
+        .envelope:before {
+            background-color: #f08080;
+            content: "";
+            position: absolute;
+            width: 212px;
+            height: 212px;
+            transform: rotate(45deg);
+            top: -105px;
+            left: 44px;
+            border-radius: 30px 0 0 0;
+        }
+
+        .card {
+            position: absolute;
+            background-color: #eae2b7;
+            width: 270px;
+            height: 170px;
+            top: 5px;
+            left: 15px;
+            box-shadow: -5px -5px 100px rgba(0, 0, 0, 0.4);
+            transition: all 0.5s ease;
+        }
+
+        .card:before {
+            content: "";
+            position: absolute;
+            border: 3px solid #003049;
+            border-style: dotted;
+            width: 240px;
+            height: 140px;
+            left: 12px;
+            top: 12px;
+        }
+
+        .text {
+            position: absolute;
+            font-family: 'Brush Script MT', cursive;
+            font-size: 28px;
+            text-align: center;
+            line-height: 25px;
+            top: 19px;
+            left: 85px;
+            color: #003049;
+        }
+
+        .heart {
+            background-color: #d62828;
+            display: inline-block;
+            height: 30px;
+            margin: 0 10px;
+            position: relative;
+            top: 110px;
+            left: 105px;
+            transform: rotate(-45deg);
+            width: 30px;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: "";
+            background-color: #d62828;
+            border-radius: 50%;
+            height: 30px;
+            position: absolute;
+            width: 30px;
+        }
+
+        .heart:before {
+            top: -15px;
+            left: 0;
+        }
+
+        .heart:after {
+            left: 15px;
+            top: 0;
+        }
+
+        .hearts {
+            position: absolute;
+            top: 0
+        }
+
+        .one,
+        .two,
+        .three,
+        .four,
+        .five {
+            background-color: red;
+            display: inline-block;
+            height: 10px;
+            margin: 0 10px;
+            position: relative;
+            transform: rotate(-45deg);
+            width: 10px;
+            top: 50px;
+        }
+
+        .one:before,
+        .one:after,
+        .two:before,
+        .two:after,
+        .three:before,
+        .three:after,
+        .four:before,
+        .four:after,
+        .five:before,
+        .five:after {
+            content: "";
+            background-color: red;
+            border-radius: 50%;
+            height: 10px;
+            position: absolute;
+            width: 10px;
+        }
+
+        .one:before,
+        .two:before,
+        .three:before,
+        .four:before,
+        .five:before {
+            top: -5px;
+            left: 0;
+        }
+
+        .one:after,
+        .two:after,
+        .three:after,
+        .four:after,
+        .five:after {
+            left: 5px;
+            top: 0;
+        }
+
+        .one {
+            left: 10px;
+            animation: heart 1s ease-out infinite;
+        }
+
+        .two {
+            left: 30px;
+            animation: heart 2s ease-out infinite;
+        }
+
+        .three {
+            left: 50px;
+            animation: heart 1.5s ease-out infinite;
+        }
+
+        .four {
+            left: 70px;
+            animation: heart 2.3s ease-out infinite;
+        }
+
+        .five {
+            left: 90px;
+            animation: heart 1.7s ease-out infinite;
+        }
+
+        @keyframes heart {
+            0% {
+                transform: translateY(0) rotate(-45deg) scale(0.3);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-150px) rotate(-45deg) scale(1.3);
+                opacity: 0.5;
+            }
+        }
+
+        .front {
+            position: absolute;
+            border-right: 180px solid #f4978e;
+            border-top: 95px solid transparent;
+            border-bottom: 100px solid transparent;
+            left: 120px;
+            top: 5px;
+            width: 0;
+            height: 0;
+            z-index: 10;
+        }
+
+        .front:before {
+            position: absolute;
+            content: "";
+            border-left: 300px solid #f8ad9d;
+            border-top: 195px solid transparent;
+            left: -120px;
+            top: -95px;
+            width: 0;
+            height: 0;
+        }
+
+        .shadow {
+            position: absolute;
+            width: 330px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.3);
+            top: 265px;
+            left: -15px;
+            animation: scale 3s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes scale {
+            0%, 100% {
+                transform: scaleX(1);
+            }
+            50% {
+                transform: scaleX(0.85);
+            }
+        }
+
+        /* Phần chữ Happy Women's Day */
+        .happy-text {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+            pointer-events: none;
+        }
+
+        .happy-text svg {
+            width: 80%;
+            display: block;
+            position: absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+        }
+
+        text {
+            fill: #e6668a;
+            font-family: consolas;
+            font-size: 9px;
+        }
+
+        /* Hiệu ứng trái tim rơi */
+        .falling-heart {
+            position: fixed;
+            top: -50px;
+            z-index: 9999;
+            animation: fall linear forwards;
+            pointer-events: none;
+            font-size: 20px;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Phần nội dung chính */
+        .main-content {
+            max-width: 800px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+            display: none;
+            animation: zoomIn 1s ease-out;
+            margin: 20px auto;
+            max-height: 90vh;
+            overflow-y: auto;
+            z-index: 1002;
+        }
+        
+        @keyframes zoomIn {
+            from { 
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to { 
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .header {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            padding: 30px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .heart-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: #ffebee;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .message {
+            background-color: #fff5f7;
+            border-left: 5px solid #ff7eb3;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .message h2 {
+            color: #ff4081;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .message p {
+            line-height: 1.6;
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .gallery-item {
+            height: 150px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            }
+
+        .flowers {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+
+        .flower {
+            font-size: 2.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .flower:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .flower:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .footer {
+            background-color: #ffebee;
+            padding: 20px;
+            text-align: center;
+            color: #d81b60;
+            font-weight: bold;
+        }
+
+        .love-note {
+            margin-top: 20px;
+            font-style: italic;
+            color: #e91e63;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .message h2 {
+                font-size: 1.5rem;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            #text-click {
+                font-size: 24px;
+            }
+            
+            .happy-text svg {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Phần vẽ hoa hồng -->
+    <div class="container" id="rose-t">
+        <svg viewBox="0 0 512 512">
+            <path class="leafOne" d="M124.302,328.222c-2.466-2.901-5.036-5.334-7.648-7.212c-1.884-1.354-4.49-1.207-6.201,0.36
+                                    c-32.608,29.866-18.892,84.017,24.01,94.752c2.251,0.563,4.612-0.548,5.624-2.636c0.407-0.841,0.781-1.732,1.138-2.648
+                                    C111.438,394.378,103.302,355.204,124.302,328.222z" />
+            <path class="stickLine"
+                d="M337.625,212.314c2.37-3.44,1.501-8.149-1.939-10.519c-3.44-2.369-8.15-1.501-10.519,1.939
+                                     c-19.493,28.304-43.492,60.076-72.147,92.853l-2.542-30.875c-0.343-4.163-4-7.261-8.158-6.917c-4.163,0.343-7.26,3.995-6.917,8.158
+                                     l3.721,45.196C172.176,385.546,93.558,449.444,4.053,496.37c-3.699,1.94-5.127,6.512-3.187,10.211
+                                     c1.352,2.579,3.983,4.054,6.705,4.054c1.183,0,2.385-0.279,3.505-0.867c63.84-33.47,124.784-76.962,181.511-129.479
+                                     c5.891-2.031,32.15-10.225,68.671-8.819c4.156,0.167,7.689-3.09,7.85-7.266c0.161-4.174-3.092-7.689-7.267-7.849
+                                     c-18.678-0.721-34.824,0.89-47.384,3.036C259.688,314.785,301.126,265.31,337.625,212.314z" />
+            <path class="leafTwo" d="M329.58,413.715c30.055,1.827,57.188-13.413,71.993-37.343c1.738-2.81,1.253-6.495-1.142-8.771
+                                   c-13.04-12.394-37.78-21.675-66.625-23.428s-54.527,4.464-68.972,15.187c-2.653,1.969-3.581,5.568-2.196,8.568
+                                   C274.438,393.475,299.525,411.888,329.58,413.715z" />
+            <path class="leafS1" d="M370.677,231.945c-8.984-2.411-17.479-7.138-24.516-14.205c-5.085-5.106-8.742-10.981-11.143-17.242
+                                  c-6.645,0.902-13.554,0.516-20.475-1.491c-9.578-2.778-17.805-7.959-24.234-14.68c-12.216,1.01-22.611,4.593-28.859,9.642
+                                  c-1.416,1.145-1.839,3.149-0.999,4.772c7.157,13.821,21.478,23.41,38.131,23.745c11.548,0.232,22.109-4.035,30.031-11.178
+                                  c-2.461,10.379-1.13,21.692,4.621,31.709c8.293,14.445,23.583,22.401,39.142,22.039c1.826-0.042,3.382-1.376,3.705-3.168
+                                  C377.509,253.982,375.658,243.144,370.677,231.945z" />
+            <path class="rose1" d="M508.212,99.848c-2.666-4.581-27.324-44.843-71.558-48.206c-4.268-0.223-8.58-0.164-12.816,0.176
+                                l-1.148,0.092l0.471,1.051c7.005,15.648,9.002,31.447,7.106,48.307l0.877,0.04c11.782,0.538,23.679,3.513,35.362,8.841l0.367,0.168
+                                l0.355-0.188c10.841-5.728,22.445-6.783,35.477-3.225C506.927,108.058,510.397,103.599,508.212,99.848z M452.476,54.541c-4.96-1.457-10.233-2.474-15.823-2.899c-4.268-0.223-8.58-0.164-12.816,0.176
+                                l-1.148,0.092l0.471,1.051c7.005,15.648,9.002,31.447,7.106,48.307l0.877,0.04c9.334,0.426,18.74,2.407,28.055,5.851
+                                C461.04,88.852,458.784,71.19,452.476,54.541z" />
+
+            <path class="rose2" d="M418.642,40.96c-24.19-37.169-71.346-39.455-76.643-39.593c-4.34-0.114-6.582,5.071-3.543,8.22
+                                 c9.38,9.721,14.029,20.406,14.212,32.665l0.005,0.402l0.324,0.242c13.637,10.194,23.714,22.558,29.944,36.731
+                                 c4.198,10.201,6.37,19.468,7.545,29.411l0.996-0.402c8.962-3.617,18.525-6.008,28.405-7.105c3.688-0.322,7.481-0.397,11.274-0.223
+                                 l0.762,0.035C434.378,79.498,430.171,59.623,418.642,40.96z " />
+
+            <path class="rose3" d="M343.8,146.676c13.018-17.726,29.06-30.524,47.682-38.039l0.576-0.232
+                                 c-1.161-9.857-3.49-19.395-7.611-29.408c-20.694-47.084-74.317-58.577-80.363-59.731c-4.853-0.927-8.31,4.471-5.489,8.546
+                                 c21.533,31.149,7.895,59.383-14.633,90.009l0.071,0.029c-16.953,26.497-7.863,61.237,18.513,76.865
+                                 c3.932,2.33,8.219,4.207,12.806,5.537c6.757,1.959,13.752,2.469,20.787,1.514l1.017-0.138l-0.367-0.959
+                                 C330.327,183.817,333.08,162.625,343.8,146.676z" />
+
+            <path class="rose4"
+                d="M510.726,141.7c-3.917-4.747-39.75-46.26-91.009-41.792c-21.664,2.405-52.653,12.308-77.277,45.856
+                                 c-13.392,19.922-16.495,52.272,4.132,72.986c3.371,3.385,7.075,6.243,11.008,8.573c26.325,15.597,61.186,6.961,76.309-20.683
+                                 l0.077,0.062c15.307-34.399,34.961-59.933,71.9-56.082C510.802,151.136,513.867,145.507,510.726,141.7z M370.903,162.627c27.904-38.017,75.307-57.751,121.144-38.743
+                                 c-16.072-12.613-41.381-26.674-72.329-23.977c-21.664,2.405-52.653,12.308-77.277,45.856c-13.392,19.922-16.495,52.272,4.132,72.986
+                                 c3.371,3.385,7.075,6.243,11.008,8.573c4.885,2.894,10.125,4.964,15.515,6.228C354.624,212.802,357.947,181.899,370.903,162.627z" />
+        </svg>
+        <p id="text-click">Click me now !</p>
+    </div>
+
+    <!-- Phần chữ Happy Women's Day -->
+    <div class="happy-text" id="happyText">
+        <svg id="theSvg" viewBox="-120 -30 240 180" enable-background="new 0 0 174 148" xml:space="preserve">
+            <defs>
+                <filter id="f" filterUnits="userSpaceOnUse" x="-120" y="-30" width="120%" height="120%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur"></feGaussianBlur>
+                    <feOffset in="blur" dx="3" dy="5" result="shadow"></feOffset>
+                    <feFlood flood-color="rgba(3,0,0,1)" result="color" />
+                    <feComposite in="color" in2="shadow" operator="in" />
+                    <feComposite in="SourceGraphic" />
+                </filter>
+                <path id="shape" d="M0, 21.054 
+           C0, 21.054 24.618, -15.165 60.750, 8.554 
+           C93.249, 29.888 57.749, 96.888 0, 117.388
+           C-57.749, 96.888  -93.249, 29.888 -60.750, 8.554
+           C-24.618, -15.165  -0, 21.054 -0, 21.054z    
+        " />
+                <path id="partialPath" />
+
+            </defs>
+
+            <text dy="-2">
+                <textPath style="font-family: fantasy;" xlink:href="#partialPath" startOffset="12">
+                    🌹Happy Women's Day
+                    🌹.........................................................................................................................................🌹From
+                    With Love 20/10!🌹
+                </textPath>
+            </text>
+
+            <use id="useThePath" xlink:href="#partialPath" stroke="white" stroke-width=".5" stroke-opacity=".5" fill="none"
+                style="display:none;" />
+        </svg>
+    </div>
+
+    <!-- Phần hộp thư -->
+    <div id="castle">
+        <div class="letter">
+            <div class="valentines">
+                <div class="envelope"></div>
+                <div class="front"></div>
+                <div class="card">
+                    <div class="text">Happy</br> Women's</br> Day!</div>
+                    <div class="heart"></div>
+                </div>
+                <div class="hearts">
+                    <div class="one"></div>
+                    <div class="two"></div>
+                    <div class="three"></div>
+                    <div class="four"></div>
+                    <div class="five"></div>
+                </div>
+            </div>
+            <div class="shadow"></div>
+        </div>
+    </div>
+
+    <!-- Phần nội dung chính -->
+    <div class="main-content" id="mainContent">
+        <div class="header">
+            <div class="heart-icon">❤️</div>
+            <h1>Chúc Mừng 20/10</h1>
+            <p>Gửi đến người con gái anh yêu</p>
+        </div>
+        
+        <div class="content">
+            <div class="message">
+                <h2>Gửi em yêu,</h2>
+                <p>
+                    Nhân ngày Phụ nữ Việt Nam 20/10, anh muốn gửi đến em những lời chúc tốt đẹp nhất. 
+                    Cảm ơn em vì đã luôn ở bên anh, chia sẻ mọi niềm vui nỗi buồn trong cuộc sống. 
+                    Em là người phụ nữ tuyệt vời nhất trong trái tim anh, là ánh sáng, là nguồn động lực 
+                    giúp anh vượt qua mọi khó khăn.
+                </p>
+                <p>
+                    Chúc em luôn xinh đẹp, rạng rỡ, mạnh khỏe và hạnh phúc. Chúc cho nụ cười của em 
+                    luôn tỏa sáng và trái tim em luôn tràn ngập yêu thương. Anh mong được đồng hành 
+                    cùng em trên mọi nẻo đường của cuộc sống.
+                </p>
+                <p class="love-note">Mãi yêu em! ❤️</p>
+            </div>
+            
+            <div class="flowers">
+                <div class="flower">🌹</div>
+                <div class="flower">🌷</div>
+                <div class="flower">💐</div>
+            </div>
+            
+            <h2 style="text-align: center; color: #ff4081; margin-bottom: 15px;">Những khoảnh khắc đẹp của chúng ta</h2>
+            <div class="gallery">
+                <div class="gallery-item"><img src="https://scontent.fdad3-6.fna.fbcdn.net/v/t1.15752-9/566408447_1222417319647920_2047683919047037878_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeEgBRBAcd0aJQ6WoWe94WEiI403EJtUPM4jjTcQm1Q8zmHczmNt79-5vfbCgd28cV2rzhVieNhGoXDrtBYISlku&_nc_ohc=u-cuy-yfOtYQ7kNvwFCq-Ib&_nc_oc=AdllFL12XCSGwij6nwZCniPIQwnrVfIpWiOO1eL2XV41GlnJ2jEM7Gxk9Rxw1BoJBvOnV7kyeS3ZPnuGeuIU7Eoc&_nc_zt=23&_nc_ht=scontent.fdad3-6.fna&oh=03_Q7cD3gE3kKARzlw4FhqxWDJoojEIfouQRLK--EkkMKDZyD2mhA&oe=691C8EDB" alt ="Ảnh 1"></div>
+                <div class="gallery-item"><img src="https://scontent.fdad3-6.fna.fbcdn.net/v/t1.15752-9/567154520_817839970737795_8605325137515117911_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeHTAEzJHYPr9rWP8NUxLCjip6dxvcTQyyWnp3G9xNDLJaQNsf-ryyscCPZ3RV0V7w_y_M3hQEBD4YUmNP9-F2M9&_nc_ohc=hEs2LBNGNrIQ7kNvwHKr_Im&_nc_oc=Adkkx4dTPm676i2Zq4CYcHVwN_foEf69rb9JoRFdh6Np9VptoCnvtRAzOGGUYy_FG0e_TTGt8_ERoiSoTNKiag19&_nc_zt=23&_nc_ht=scontent.fdad3-6.fna&oh=03_Q7cD3gEms6Hpumeb9ERQTxiOSVRYLh4yoBUAVGhIIodmGNc_zQ&oe=691C941E" alt="Ảnh 2"></div>
+                <div class="gallery-item"><img src="https://scontent.fdad3-6.fna.fbcdn.net/v/t1.15752-9/556967670_840987118321659_3780729975770514655_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeF1PsVB0LLMipo6aPM5SLWV8NYHGaTt6vzw1gcZpO3q_KP2p7skmWWaXksFaPn8VNW17IR1hbx4sh1QbwpadNXU&_nc_ohc=Eik8yeLI-pAQ7kNvwE0dhd_&_nc_oc=Adn0hs0H63_OaPKV3YmpC7D6G1qQIwEj4et7PZn6PgOeT0Wg-xRuNS8plSKwHRPNGT_rQV1sHuqvnbrEa16C579s&_nc_zt=23&_nc_ht=scontent.fdad3-6.fna&oh=03_Q7cD3gG4pOw_KuRem9Olliu3Q4HQxLs4GXzhH7zcTUeoOkBjDQ&oe=691C73CE" alt="Ảnh 3"></div>
+                <div class="gallery-item"><img src="https://scontent.fdad3-3.fna.fbcdn.net/v/t1.15752-9/566367994_3709670275993224_3064091999408478134_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeHoHPANFTO-wk8BWVR8MNdWZL-gVVh8qiRkv6BVWHyqJOkltm_WsHR89i5u3P1qJYvMLaxaZa7lbveO3JTODnDB&_nc_ohc=Z1ub-qlCqfoQ7kNvwE2NprH&_nc_oc=Adlnochd6fjl0n19cEcI-Ne4gPMRBwitSYqPT5V2tVAAJs_JoMJkbNCgbyFY-OdxpdE0Of716mFKJ-bE-UUTN6X_&_nc_zt=23&_nc_ht=scontent.fdad3-3.fna&oh=03_Q7cD3gEhFgzTVNZba1e73sr8nK6ZG25c12igxsQiKWeygLp8Ig&oe=691C8D95" alt="Ảnh 4"></div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Chúc em một ngày 20/10 thật ý nghĩa và tràn ngập hạnh phúc!</p>
+            <p>Yêu em nhiều! 💖</p>
+        </div>
+    </div>
+    
+    <!-- Audio element -->
+    <audio id="backgroundMusic" loop>
+        <source src="https://trungthuu.onrender.com/music/anhnangcuaanh.mp3" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ phần tử audio.
+    </audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tự động phát nhạc khi trang được tải
+            function playMusic() {
+                const music = document.getElementById('backgroundMusic');
+                music.volume = 0.5; // Giảm âm lượng để không quá lớn
+                music.play().catch(error => {
+                    console.log('Tự động phát nhạc bị chặn: ', error);
+                    // Nếu bị chặn, thử phát lại khi người dùng tương tác
+                    document.addEventListener('click', function() {
+                        music.play().catch(e => console.log('Vẫn không thể phát nhạc: ', e));
+                    }, { once: true });
+                });
+            }
+            
+            // Thử phát nhạc ngay khi trang tải
+            playMusic();
+            
+            // Hiệu ứng vẽ hoa hồng
+            var leafOne = document.querySelector('.leafOne');
+            var stickLine = document.querySelector('.stickLine');
+            var leafTwo = document.querySelector('.leafTwo');
+            var leafS1 = document.querySelector('.leafS1');
+            var rose1 = document.querySelector('.rose1');
+            var rose2 = document.querySelector('.rose2');
+            var rose3 = document.querySelector('.rose3');
+            var rose4 = document.querySelector('.rose4');
+
+            var lineDrawing = anime({
+                targets: [leafOne, stickLine, leafTwo, leafS1, rose1, rose2, rose3, rose4],
+                strokeDashoffset: [anime.setDashoffset, 0],
+                easing: 'easeInOutCubic',
+                duration: 3000,
+                begin: function (anim) {
+                    //Leaf One
+                    leafOne.setAttribute("stroke", "black");
+                    leafOne.setAttribute("fill", "none");
+                    // Leaf Two
+                    leafTwo.setAttribute("stroke", "black");
+                    leafTwo.setAttribute("fill", "none");
+                    //Stick
+                    stickLine.setAttribute("stroke", "black");
+                    stickLine.setAttribute("fill", "none");
+                    // Leaf S1
+                    leafS1.setAttribute("stroke", "black");
+                    leafS1.setAttribute("fill", "none");
+                    //Rose One
+                    rose1.setAttribute("stroke", "black");
+                    rose1.setAttribute("fill", "none");
+                    //Rose Two
+                    rose2.setAttribute("stroke", "black");
+                    rose2.setAttribute("fill", "none");
+                    //Rose Three
+                    rose3.setAttribute("stroke", "black");
+                    rose3.setAttribute("fill", "none");
+                    //Rose Three
+                    rose4.setAttribute("stroke", "black");
+                    rose4.setAttribute("fill", "none");
+                },
+                complete: function (anim) {
+                    //Leaf One
+                    leafOne.setAttribute("fill", "#9CDD05");
+                    leafOne.setAttribute("stroke", "none");
+                    //Leaf Two 
+                    leafTwo.setAttribute("fill", "#9CDD05");
+                    leafTwo.setAttribute("stroke", "none");
+                    //Stick
+                    stickLine.setAttribute("fill", "#83AA2E");
+                    stickLine.setAttribute("stroke", "none");
+                    // Leaf S1
+                    leafS1.setAttribute("fill", "#9CDD05");
+                    leafS1.setAttribute("stroke", "none");
+                    // Rose 1
+                    rose1.setAttribute("fill", "#F37D79");
+                    rose1.setAttribute("stroke", "none");
+                    // Rose 2
+                    rose2.setAttribute("fill", "#D86666");
+                    rose2.setAttribute("stroke", "none");
+                    // Rose 3
+                    rose3.setAttribute("fill", "#F37D79");
+                    rose3.setAttribute("stroke", "none");
+                    // Rose 3
+                    rose4.setAttribute("fill", "#D86666");
+                    rose4.setAttribute("stroke", "none");
+                    
+                    // Hiển thị text click sau khi vẽ xong
+                    setTimeout(() => {
+                        document.getElementById('text-click').style.display = 'block';
+                    }, 300);
+                },
+                autoplay: true,
+            });
+
+            // Xử lý sự kiện click vào hoa
+            document.getElementById('rose-t').onclick = function() {
+                document.getElementById('rose-t').style.display = 'none';
+                document.getElementById('happyText').style.display = 'flex';
+                
+                // Hiệu ứng chữ Happy Women's Day
+                let rid = null; // request animation id
+                const SVG_NS = "http://www.w3.org/2000/svg";
+                const pathlength = document.getElementById('shape').getTotalLength();
+
+                let t = 0; // at the begining of the path
+                let lengthAtT = pathlength * t;
+
+                let d = document.getElementById('shape').getAttribute("d");
+
+                // 1. build the d array
+                let n = d.match(/C/gi).length; // how many times
+
+                let pos = 0; // the position, used to find the indexOf the nth C
+
+                class subPath {
+                    constructor(d) {
+                        this.d = d;
+                        this.get_PointsRy();
+                        this.previous = subpaths.length > 0 ? subpaths[subpaths.length - 1] : null;
+                        this.measurePath();
+                        this.get_M_Point(); //lastPoint
+                        this.lastCubicBezier;
+                        this.get_lastCubicBezier();
+                    }
+
+                    get_PointsRy() {
+                        this.pointsRy = [];
+                        let temp = this.d.split(/[A-Z,a-z\s,]/).filter(v => v); // remove empty elements
+                        temp.map(item => {
+                            this.pointsRy.push(parseFloat(item));
+                        }); //this.pointsRy numbers not strings
+                    }
+
+                    measurePath() {
+                        let path = document.createElementNS(SVG_NS, "path");
+                        path.setAttributeNS(null, "d", this.d);
+                        // no need to append it to the SVG
+                        // the lengths of every path in dry
+                        this.pathLength = path.getTotalLength();
+                    }
+
+                    get_M_Point() {
+                        if (this.previous) {
+                            let p = this.previous.pointsRy;
+                            let l = p.length;
+                            this.M_point = [p[l - 2], p[l - 1]];
+                        } else {
+                            let p = this.pointsRy;
+                            this.M_point = [p[0], p[1]];
+                        }
+                    }
+
+                    get_lastCubicBezier() {
+                        let lastIndexOfC = this.d.lastIndexOf("C");
+                        let temp = this.d
+                            .substring(lastIndexOfC + 1)
+                            .split(/[\s,]/)
+                            .filter(v => v);
+                        let _temp = [];
+                        temp.map(item => {
+                            _temp.push(parseFloat(item));
+                        });
+                        this.lastCubicBezier = [this.M_point];
+                        for (let i = 0; i < _temp.length; i += 2) {
+                            this.lastCubicBezier.push(_temp.slice(i, i + 2));
+                        }
+                    }
+                }
+
+                let subpaths = [];
+
+                // create new subPaths
+                for (let i = 0; i < n; i++) {
+                    // finds the of nth C in d
+                    let newpos = d.indexOf("C", pos + 1);
+                    if (i > 0) {
+                        // if it's not the first C
+                        let sPath = new subPath(d.substring(0, newpos));
+                        subpaths.push(sPath);
+                    }
+                    //change the value of the position pos
+                    pos = newpos;
+                }
+                // at the end add d to the subpaths array
+                subpaths.push(new subPath(d));
+
+                // 2. get the index of the bezierLengths where the point at t is
+                let index;
+                for (index = 0; index < subpaths.length; index++) {
+                    if (subpaths[index].pathLength >= lengthAtT) {
+                        break;
+                    }
+                }
+
+                function get_T(t, index) {
+                    let T;
+                    lengthAtT = pathlength * t;
+                    if (index > 0) {
+                        T =
+                            (lengthAtT - subpaths[index].previous.pathLength) /
+                            (subpaths[index].pathLength - subpaths[index].previous.pathLength);
+                    } else {
+                        T = lengthAtT / subpaths[index].pathLength;
+                    }
+                    return T;
+                }
+
+                let T = get_T(t, index);
+
+                let newPoints = getBezierPoints(T, subpaths[index].lastCubicBezier);
+
+                drawCBezier(newPoints, document.getElementById('partialPath'), index);
+
+                function getBezierPoints(t, points) {
+                    let helperPoints = [];
+
+                    // helper points 0,1,2
+                    for (let i = 1; i < 4; i++) {
+                        //points.length must be 4 !!!
+                        let p = lerp(points[i - 1], points[i], t);
+                        helperPoints.push(p);
+                    }
+
+                    // helper points 3,4
+                    helperPoints.push(lerp(helperPoints[0], helperPoints[1], t));
+                    helperPoints.push(lerp(helperPoints[1], helperPoints[2], t));
+
+                    // helper point 5 is where the first Bézier ends and where the second Bézier begins
+                    helperPoints.push(lerp(helperPoints[3], helperPoints[4], t));
+
+                    // points for the dynamic bézier
+                    let firstBezier = [
+                        points[0],
+                        helperPoints[0],
+                        helperPoints[3],
+                        helperPoints[5]
+                    ];
+                    return firstBezier;
+                }
+
+                function lerp(A, B, t) {
+                    let ry = [
+                        (B[0] - A[0]) * t + A[0], //x
+                        (B[1] - A[1]) * t + A[1] //y
+                    ];
+                    return ry;
+                }
+
+                function drawCBezier(points, path, index) {
+                    let d;
+
+                    if (index > 0) {
+                        d = subpaths[index].previous.d;
+                    } else {
+                        d = `M${points[0][0]},${points[0][1]} C`;
+                    }
+
+                    // points.length == 4
+                    for (let i = 1; i < 4; i++) {
+                        d += ` ${points[i][0]},${points[i][1]} `;
+                    }
+                    path.setAttributeNS(null, "d", d);
+                }
+
+                rid = window.requestAnimationFrame(Typing);
+                function Typing() {
+                    rid = window.requestAnimationFrame(Typing);
+                    if (t >= 1) {
+                        window.cancelAnimationFrame(rid);
+                        rid = null;
+                        // Sau khi hiệu ứng chữ kết thúc, hiển thị hộp thư và vẫn giữ trái tim
+                        setTimeout(() => {
+                            document.getElementById('castle').style.display = 'flex';
+                            // Bắt đầu hiệu ứng trái tim rơi
+                            startHeartRain();
+                        }, 500);
+                    } else {
+                        t += 0.004;
+                    }
+
+                    lengthAtT = pathlength * t;
+                    for (index = 0; index < subpaths.length; index++) {
+                        if (subpaths[index].pathLength >= lengthAtT) {
+                            break;
+                        }
+                    }
+                    T = get_T(t, index);
+                    newPoints = getBezierPoints(T, subpaths[index].lastCubicBezier);
+                    drawCBezier(newPoints, document.getElementById('partialPath'), index);
+                }
+            }
+
+            // Xử lý sự kiện click vào hộp thư
+            $(document).ready(function() {
+                $('.valentines').mouseenter(function() {
+                    $('.card').stop().animate({
+                        top: '-90px'
+                    }, 'slow');
+                }).mouseleave(function() {
+                    $('.card').stop().animate({
+                        top: 0
+                    }, 'slow');
+                });
+
+                $('.card').click(function() {
+                    $('#castle').hide();
+                    $('#happyText').hide();
+                    $('#mainContent').show();
+                });
+            });
+            
+            // Hàm tạo hiệu ứng trái tim rơi
+            function startHeartRain() {
+                function createHeart() {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = '❤️';
+                    heart.classList.add('falling-heart');
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+                    heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 5000);
+                }
+                
+                // Tạo trái tim rơi mỗi 300ms
+                setInterval(createHeart, 300);
+            }
+            
+            // Thêm hiệu ứng khi click vào ảnh
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            galleryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                img.style.transform = 'scale(1.1) rotate(5deg)';
+                setTimeout(() => {
+                img.style.transform = 'scale(1) rotate(0deg)';
+                }, 500);
+            });
+            });
+        });
+    </script>
+</body>
+</html>
